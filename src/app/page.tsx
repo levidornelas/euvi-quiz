@@ -94,15 +94,15 @@ export default function RecifeQuiz() {
         </div>
 
         {/* Conteúdo principal do quiz */}
-        <Card className="w-full max-w-2xl bg-white/95 backdrop-blur-sm shadow-2xl flex items-center h-auto">
+        <Card className="w-full max-w-2xl bg-white/95 backdrop-blur-sm shadow-2xl flex items-center h-auto mb-20">
           <CardContent className="p-8 text-center w-full">
             <div className="mb-6">
-              <h1 className="text-5xl font-bold text-blue-800 mb-3">Quiz do Recife</h1>
-              <p className="text-xl text-blue-800 mt-6">
+              <h1 className="text-5xl font-bold text-blue-800">Quiz sobre a cultura Recifense</h1>
+              <p className="text-xl text-blue-800 mt-4">
                 Teste seus conhecimentos sobre a cultura e história do Recife
               </p>
               <div className="bg-blue-50 p-5 rounded-lg">
-                <p className="text-xl text-blue-800">
+                <p className="text-xl text-blue-800 mb-2">
                   Você responderá <strong>3 perguntas aleatórias</strong> de um total de 11 questões sobre:
                 </p>
                 <div className="grid grid-cols-1 gap-2 text-xl text-blue-800 mt-4">
@@ -121,13 +121,6 @@ export default function RecifeQuiz() {
             </Button>
           </CardContent>
         </Card>
-
-        {/* Footer com informações adicionais */}
-        <div className="w-full max-w-2xl mb-10">
-          <div className="text-center text-white/80 text-xl font-bold">
-            <p>Uma iniciativa para promover a cultura recifense</p>
-          </div>
-        </div>
       </div>
     )
   }
