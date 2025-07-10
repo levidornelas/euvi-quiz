@@ -77,18 +77,18 @@ export default function RecifeQuiz() {
             <div className="flex items-center justify-center gap-8">
               <div className="flex-1 flex justify-center">
                 <img
-                  src="/prefeitura_logo.jpg"
+                  src="/logo_euvi.png"
                   alt="Logo Prefeitura do Recife"
                   className="h-45 object-contain"
                 />
               </div>
               <div className="w-px h-16 bg-blue-200"></div>
               <div className="flex-1 flex justify-center">
-                <img src="/logo_euvi.png" alt="Logo Eu Vi" className="h-45 object-contain" />
+                <img src="/prefeitura_logo.jpg" alt="Logo Eu Vi" className="h-25 object-contain" />
               </div>
             </div>
             <p className="text-center text-xl text-blue-900 mt-2 font-bold">
-              Oferecido pela Prefeitura do Recife e pelo Eu Vi
+            Ciência também é memória, cultura e território
             </p>
           </div>
         </div>
@@ -176,7 +176,6 @@ export default function RecifeQuiz() {
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 flex items-center justify-center p-8">
       <Card className="w-full max-w-6xl bg-white/95 backdrop-blur-sm shadow-2xl">
         <CardContent className="p-8">
-          {/* Header */}
           <div className="flex justify-between items-center mb-8">
             <Badge variant="secondary" className="text-xl px-4 py-2">
               Pergunta {currentQuestionIndex + 1} de 3
@@ -186,7 +185,6 @@ export default function RecifeQuiz() {
             </div>
           </div>
 
-          {/* Progress Bar */}
           <div className="w-full bg-blue-200 rounded-full h-3 mb-8">
             <div
               className="bg-blue-600 h-3 rounded-full transition-all duration-500"
@@ -194,7 +192,7 @@ export default function RecifeQuiz() {
             />
           </div>
 
-          {/* Image */}
+
           {currentQuestion.image && (
             <div className="mb-6 flex justify-center">
               <div className="relative w-full max-w-md h-48 rounded-lg overflow-hidden shadow-lg">
@@ -207,12 +205,10 @@ export default function RecifeQuiz() {
             </div>
           )}
 
-          {/* Question */}
           <div className="mb-8">
             <h2 className="text-3xl font-bold text-blue-800 mb-6 leading-relaxed">{currentQuestion.question}</h2>
           </div>
 
-          {/* Options */}
           <div className="grid gap-4 mb-8">
             {currentQuestion.options.map((option, index) => {
               let buttonClass = "text-xl p-6 h-auto text-left justify-start transition-all duration-300 "
@@ -249,8 +245,7 @@ export default function RecifeQuiz() {
               )
             })}
           </div>
-
-          {/* Next Button */}
+          
           {showResult && (
             <div className="text-center">
               <Button
