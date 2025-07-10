@@ -1,12 +1,12 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Question } from "./types/question";
 import { QUESTIONS } from "./data/questions";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle, XCircle, RotateCcw, Play } from "lucide-react"
+import { CheckCircle, XCircle, RotateCcw, Play, ArrowBigRightDash } from "lucide-react"
 
 export default function RecifeQuiz() {
   const [gameState, setGameState] = useState<"start" | "playing" | "finished">("start")
@@ -87,36 +87,34 @@ export default function RecifeQuiz() {
                 <img src="/logo_euvi.png" alt="Logo Eu Vi" className="h-45 object-contain" />
               </div>
             </div>
-            <p className="text-center text-lg font-semibold text-blue-900 mt-2">
+            <p className="text-center text-xl text-blue-900 mt-2 font-bold">
               Oferecido pela Prefeitura do Recife e pelo Eu Vi
             </p>
           </div>
         </div>
 
         {/* Conteúdo principal do quiz */}
-        <Card className="w-full max-w-2xl bg-white/95 backdrop-blur-sm shadow-2xl flex-1 flex items-center">
+        <Card className="w-full max-w-2xl bg-white/95 backdrop-blur-sm shadow-2xl flex items-center h-auto">
           <CardContent className="p-8 text-center w-full">
             <div className="mb-6">
-              <h1 className="text-5xl font-bold text-blue-900 mb-3">Quiz do Recife</h1>
-              <p className="text-xl text-blue-700 mt-6">
+              <h1 className="text-5xl font-bold text-blue-800 mb-3">Quiz do Recife</h1>
+              <p className="text-xl text-blue-800 mt-6">
                 Teste seus conhecimentos sobre a cultura e história do Recife
               </p>
-              <div className="bg-blue-50 p-5 rounded-lg mb-6">
-                <p className="text-xl text-blue-800 mb-8">
+              <div className="bg-blue-50 p-5 rounded-lg">
+                <p className="text-xl text-blue-800">
                   Você responderá <strong>3 perguntas aleatórias</strong> de um total de 11 questões sobre:
                 </p>
-                <div className="grid grid-cols-1 gap-2 text-xl text-blue-700">
+                <div className="grid grid-cols-1 gap-2 text-xl text-blue-800 mt-4">
                   <div>• Cinema e Arte</div>
                   <div>• Música e Cultura</div>
-                  <div>• História e Geografia</div>
                   <div>• Literatura e Poesia</div>
                 </div>
               </div>
             </div>
             <Button
               onClick={startQuiz}
-              size="lg"
-              className="text-xl px-10 py-8 bg-blue-600 hover:bg-blue-700 text-white mt-4"
+              className="text-xl py-8 rounded-2xl bg-blue-800 hover:bg-blue-700 text-white cursor-pointer min-w-[250px]"
             >
               <Play className="mr-3 h-7 w-7" />
               Começar Quiz
@@ -125,8 +123,8 @@ export default function RecifeQuiz() {
         </Card>
 
         {/* Footer com informações adicionais */}
-        <div className="w-full max-w-2xl mt-4">
-          <div className="text-center text-white/80 text-xl">
+        <div className="w-full max-w-2xl mb-10">
+          <div className="text-center text-white/80 text-xl font-bold">
             <p>Uma iniciativa para promover a cultura recifense</p>
           </div>
         </div>
@@ -139,18 +137,18 @@ export default function RecifeQuiz() {
       <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 flex items-center justify-center p-8">
         <Card className="w-full max-w-4xl bg-white/95 backdrop-blur-sm shadow-2xl">
           <CardContent className="p-12 text-center">
-            <h1 className="text-5xl font-bold text-blue-900 mb-8">Quiz Finalizado!</h1>
+            <h1 className="text-5xl font-bold text-blue-800 mb-8">Quiz Finalizado!</h1>
 
             <div className="bg-blue-50 p-8 rounded-lg mb-8">
-              <div className="text-6xl font-bold text-blue-600 mb-4">{score}/3</div>
+              <div className="text-6xl font-bold text-blue-800 mb-4">{score}/3</div>
               <p className="text-2xl text-blue-800">
                 {score === 3
-                  ? "Parabéns! Você é um expert em Recife!"
+                  ? "Parabéns! Tu é arretado e sabe tudo sobre o Recife!"
                   : score === 2
-                    ? "Muito bem! Você conhece bastante sobre Recife!"
+                    ? "Bateu na trave! Tu é rochedo e quase que gabarita!"
                     : score === 1
-                      ? "Bom trabalho! Continue aprendendo sobre Recife!"
-                      : "Que tal estudar mais sobre nossa bela cidade?"}
+                      ? "Quase lá! Continue aprendendo mais sobre o Recife!"
+                      : "Que tal conhecer um pouco mais a nossa bela cidade?"}
               </p>
             </div>
 
@@ -170,7 +168,7 @@ export default function RecifeQuiz() {
             <Button
               onClick={resetQuiz}
               size="lg"
-              className="text-2xl px-10 py-8 bg-blue-600 hover:bg-blue-700 text-white"
+              className="text-xl px-10 py-10 rounded-2xl bg-blue-800 hover:bg-blue-700 text-white min-w-[250px]"
             >
               <RotateCcw className="mr-3 h-8 w-8" />
               Jogar Novamente
@@ -190,7 +188,7 @@ export default function RecifeQuiz() {
             <Badge variant="secondary" className="text-xl px-4 py-2">
               Pergunta {currentQuestionIndex + 1} de 3
             </Badge>
-            <div className="text-2xl font-bold text-blue-900">
+            <div className="text-2xl font-bold text-blue-800">
               Pontuação: {score}/{currentQuestionIndex + (showResult ? 1 : 0)}
             </div>
           </div>
@@ -203,9 +201,22 @@ export default function RecifeQuiz() {
             />
           </div>
 
+          {/* Image */}
+          {currentQuestion.image && (
+            <div className="mb-6 flex justify-center">
+              <div className="relative w-full max-w-md h-48 rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src={currentQuestion.image || "/placeholder.svg"}
+                  alt="Imagem relacionada à pergunta"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          )}
+
           {/* Question */}
           <div className="mb-8">
-            <h2 className="text-3xl font-bold text-blue-900 mb-6 leading-relaxed">{currentQuestion.question}</h2>
+            <h2 className="text-3xl font-bold text-blue-800 mb-6 leading-relaxed">{currentQuestion.question}</h2>
           </div>
 
           {/* Options */}
@@ -245,14 +256,17 @@ export default function RecifeQuiz() {
               )
             })}
           </div>
-          
+
+          {/* Next Button */}
           {showResult && (
             <div className="text-center">
               <Button
                 onClick={nextQuestion}
-                size="lg"
-                className="text-xl px-10 py-8 bg-blue-600 hover:bg-blue-700 text-white"
+                className="text-xl px-10 py-10 rounded-2xl bg-blue-800 hover:bg-blue-700 text-white min-w-[250px]"
               >
+                <ArrowBigRightDash
+                  className="mr-3 h-8 w-8"
+                />
                 {currentQuestionIndex < selectedQuestions.length - 1 ? "Próxima Pergunta" : "Ver Resultado"}
               </Button>
             </div>
@@ -262,4 +276,3 @@ export default function RecifeQuiz() {
     </div>
   )
 }
-

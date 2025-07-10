@@ -1,17 +1,17 @@
-// src/data/questions.ts
-
 import { Question } from "../types/question";
 
 export const QUESTIONS: Question[] = [
   {
     id: 1,
+    image: '/oceania.jpg',
     question:
       "O filme Aquarius narra a história de Clara, interpretada pela atriz Sonia Braga, que compra briga com uma construtora que quer demolir o prédio histórico em que ela mora. Em qual bairro fica localizado o Edf. Oceania, onde foi filmado o longa-metragem de Kleber Mendonça Filho?",
     options: ["Boa Viagem", "Pina", "Candeias"],
-    correct: 0,
+    correct: 1,
   },
   {
     id: 2,
+    image: '/boivoador.jpg',
     question:
       'A tela "Boi Voador" retrata um episódio histórico da época o Recife ficou sob o domínio holandês. Em qual ponte se passa a história que inspirou o quadro de Tereza Costa Rêgo?',
     options: ["Ponte da Boa Vista (Ponte de Ferro)", "Ponte Buarque de Macêdo", "Ponte Mauricio de Nassau"],
@@ -19,6 +19,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 3,
+    image: '/malakoff.jpg',
     question:
       '"Alzira bebendo vodka defronte da Torre Malakoff / Descobre que o chão do Recife afunda um milímetro a cada gole..." Quem é um dos compositores e cantor da música Alzira e A Torre?',
     options: ["Alceu Valença", "Johnny Hooker", "Lenine"],
@@ -26,6 +27,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 4,
+    image: '/ptstacruz.jpg',
     question:
       "O Pátio de Santo Cruz foi cenário para qual filme que conta a história de amor entre uma menina apaixonada por cinema e um malandro forasteiro?",
     options: ["Lisbela e o Prisioneiro", "Cine Holliúdy", "O Auto da Compadecida"],
