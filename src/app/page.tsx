@@ -138,20 +138,16 @@ export default function RecifeQuiz() {
 
           <Card className="w-full max-w-4xl bg-white/95 backdrop-blur-sm shadow-2xl">
             <CardContent className="p-12 text-center w-full">
-              <div className="mb-12">
-                <h1 className="text-7xl font-bold text-blue-800 mb-6">Quiz sobre a cultura Recifense</h1>
-                <p className="text-3xl text-blue-800 mb-8">
-                  Teste seus conhecimentos sobre a cultura e história do Recife
-                </p>
+              <div className="mb-8">
+                <h1 className="text-7xl font-bold text-blue-800 mb-4">Você viu?</h1>
                 <div className="bg-blue-50 p-10 rounded-2xl">
-                  <p className="text-3xl text-blue-800 mb-6">
-                    Você responderá <strong>3 perguntas aleatórias</strong> de um total de 11 questões sobre:
+                  <p className="text-3xl text-blue-800">
+                    Chegou a hora de testar o quanto você conhece do Recife que vive nas artes! <br /><br />
+                    <span className="font-semibold text-blue-900">
+                      Cultura, memória e arte em forma de quiz.
+                    </span> <br /> <br />
+                    Vai encarar? <span className="font-bold">Simbora!</span>
                   </p>
-                  <div className="grid grid-cols-1 gap-4 text-3xl text-blue-800">
-                    <div>• Cinema e Arte</div>
-                    <div>• Música e Cultura</div>
-                    <div>• Literatura e Poesia</div>
-                  </div>
                 </div>
               </div>
               <Button
@@ -185,8 +181,8 @@ export default function RecifeQuiz() {
                     : score === 2
                       ? "Bateu na trave! Tu é rochedo e quase que gabarita!"
                       : score === 1
-                        ? "Quase lá! Continue aprendendo mais sobre o Recife!"
-                        : "Que tal conhecer um pouco mais a nossa bela cidade?"}
+                        ? "Quase lá! Acompanha o Eu Vi para continuar aprendendo mais sobre nossa cidade!"
+                        : "Quase lá! Acompanha o Eu Vi para continuar aprendendo mais sobre nossa cidade!"}
                 </p>
               </div>
               <div className="grid grid-cols-3 gap-8 mb-12">
