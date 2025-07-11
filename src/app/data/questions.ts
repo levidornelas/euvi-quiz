@@ -8,6 +8,7 @@ export const QUESTIONS: Question[] = [
       "O filme Aquarius narra a história de Clara, interpretada pela atriz Sonia Braga, que compra briga com uma construtora que quer demolir o prédio histórico em que ela mora. Em qual bairro fica localizado o Edf. Oceania, onde foi filmado o longa-metragem de Kleber Mendonça Filho?",
     options: ["Boa Viagem", "Pina", "Candeias"],
     correct: 1,
+    mediaAfter: '/aquarius.mp4'
   },
   {
     id: 2,
@@ -32,6 +33,7 @@ export const QUESTIONS: Question[] = [
       "O Pátio de Santo Cruz foi cenário para qual filme que conta a história de amor entre uma menina apaixonada por cinema e um malandro forasteiro?",
     options: ["Lisbela e o Prisioneiro", "Cine Holliúdy", "O Auto da Compadecida"],
     correct: 0,
+    mediaAfter: '/patio.mp4'
   },
   {
     id: 5,
@@ -39,6 +41,7 @@ export const QUESTIONS: Question[] = [
       '"Vira Lata" é o nome da parceria de João Gomes e Pabllo Vittar. Em qual bairro da Zona Sul do Recife foi gravado o videoclipe da música?',
     options: ["Ipsep", "Ibura", "Jordão"],
     correct: 1,
+    mediaAfter:'/ibura.mp4'
   },
   {
     id: 6,
