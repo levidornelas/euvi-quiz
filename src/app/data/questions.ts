@@ -1,5 +1,6 @@
 import { Question } from "../types/question";
 
+
 export const QUESTIONS: Question[] = [
   {
     id: 1,
@@ -89,4 +90,19 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
   },
+
+  {
+    id: 12,
+    image: '/joão cabral.png',
+    question:
+      "O poema “O Cão sem Plumas”, de João Cabral de Melo Neto, é uma metáfora sobre um importante rio que cruza a cidade do Recife. Que rio é esse?",
+    options: [
+      "Rio Beberibe",
+      "Rio Capibaribe",
+      "Rio Tejipió",
+    ],
+    correct: 0,
+    mediaAfter: '/Cão-sem-plumas.mp4'
+  },
+
 ];
