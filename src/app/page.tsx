@@ -185,6 +185,20 @@ export default function RecifeQuiz() {
                         : "Quase lá! Acompanha o Eu Vi para continuar aprendendo mais sobre nossa cidade!"}
                 </p>
               </div>
+              <div  className="mt-6 text-center px-4 mb-10">
+               <p  className="text-4xl text-blue-800 mb-4 leading-snug">
+                Valeu por embarcar com a gente nesse passeio pela arte e pela memória do Recife! 
+                </p>
+                <p className="text-4xl text-blue-800 mb-4 leading-snug">
+                Quer continuar essa viagem? 
+                </p >
+
+                <p className="text-4xl text-blue-800 mb-4 leading-snug">
+                Aponte a câmera pro QR Code e acompanhe o Eu Vi!
+                </p >
+                <img src='insta_qrcode.png'   className="mx-auto mt-10 w-40 h-60"/>
+
+              </div>
               <div className="grid grid-cols-3 gap-8 mb-12">
                 {answers.map((correct, index) => (
                   <div key={index} className="flex items-center justify-center p-8 bg-white rounded-xl shadow-lg">
@@ -277,7 +291,7 @@ export default function RecifeQuiz() {
 
             {currentQuestion.image && (
               <div className="flex justify-center items-center">
-                <div className="relative w-full max-w-2xl h-65 rounded-2xl overflow-hidden shadow-xl">
+                <div className="relative w-full max-w-3xl h-66 rounded-2xl overflow-hidden shadow-xl">
                   <img
                     src={currentQuestion.image || "/placeholder.svg"}
                     alt="Imagem relacionada à pergunta"
@@ -288,7 +302,7 @@ export default function RecifeQuiz() {
             )}
 
             <div className="mb-4">
-              <h2 className="text-5xl font-bold text-blue-800 mb-8 leading-relaxed text-center">{currentQuestion.question}</h2>
+              <h2 className="text-3xl font-bold text-blue-800 mb-8 leading-relaxed text-center">{currentQuestion.question}</h2>
             </div>
 
             <div className="grid gap-6 mb-4">
