@@ -185,10 +185,10 @@ export default function RecifeQuiz() {
           }`}>
           <Card className="w-full max-w-4xl bg-white/95 backdrop-blur-sm shadow-2xl">
             <CardContent className="p-8 text-center">
-              <h1 className="text-8xl font-bold text-blue-800">Quiz Finalizado!</h1>
+              <h1 className="text-5xl font-bold text-blue-800">Quiz Finalizado!</h1>
               <div className="bg-blue-50 p-8 rounded-2xl">
-                <div className="text-9xl font-bold text-blue-800 mb-8">{score}/3</div>
-                <div className="text-4xl text-blue-800 font-semibold">
+                <div className="text-5xl font-bold text-blue-800 mb-8">{score}/3</div>
+                <div className="text-3xl text-blue-800 font-semibold">
                   <p className="">
                     {score === 3
                       ? "Parabéns! Tu é arretado e sabe tudo sobre o Recife!"
@@ -303,11 +303,11 @@ export default function RecifeQuiz() {
               </div>
             </div>
 
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex justify-between items-center">
               <Badge variant="secondary" className="text-3xl px-8 py-4">
                 Pergunta {currentQuestionIndex + 1} de 3
               </Badge>
-              <div className="text-4xl font-bold text-blue-800">
+              <div className="text-3xl font-bold text-blue-800">
                 Pontuação: {score}/{currentQuestionIndex + (showResult ? 1 : 0)}
               </div>
             </div>
@@ -333,8 +333,8 @@ export default function RecifeQuiz() {
               </div>
             )}
 
-            <div className="mb-4">
-              <h2 className="text-3xl font-semibold text-blue-800 mt-1 leading-relaxed text-center">{currentQuestion.question}</h2>
+            <div>
+              <h2 className="text-3xl text-blue-800 font-semibold mt-2 leading-10 text-center">{currentQuestion.question}</h2>
             </div>
 
             <div className="grid gap-6 mb-4">
@@ -361,7 +361,7 @@ export default function RecifeQuiz() {
                     onClick={() => handleAnswerSelect(index)}
                     disabled={showResult}
                   >
-                    <span className="font-bold mr-6 text-4xl">{String.fromCharCode(65 + index)})</span>
+                    <span className="font-bold mr-6 text-3xl">{String.fromCharCode(65 + index)})</span>
                     <span className="flex-1">{option}</span>
                     {showResult && index === currentQuestion.correct && (
                       <CheckCircle className="ml-auto h-12 w-12 text-green-600" />

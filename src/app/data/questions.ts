@@ -6,7 +6,7 @@ export const QUESTIONS: Question[] = [
     id: 1,
     image: '/oceania.jpg',
     question:
-      "O filme Aquarius narra a história de Clara, interpretada pela atriz Sonia Braga, que compra briga com uma construtora que quer demolir o prédio histórico em que ela mora. Em qual bairro fica localizado o Edf. Oceania, onde foi filmado o longa-metragem de Kleber Mendonça Filho?",
+      '“Aquarius” narra a história de uma mulher que enfrenta pressão de uma construtora para deixar o prédio em que vive. O filme de Kleber Mendonça Filho foi gravado no Edf. Oceania, localizado em qual bairro?',
     options: ["Boa Viagem", "Pina", "Candeias"],
     correct: 1,
     mediaAfter: '/aquarius.mp4'
@@ -23,7 +23,7 @@ export const QUESTIONS: Question[] = [
     id: 3,
     image: '/malakoff.jpg',
     question:
-      '"Alzira bebendo vodka defronte da Torre Malakoff / Descobre que o chão do Recife afunda um milímetro a cada gole..." Quem é um dos compositores e cantor da música Alzira e A Torre?',
+      'Os versos “Alzira bebendo vodka defronte da Torre Malakoff / Descobre que o chão do Recife afunda um milímetro a cada gole...” fazem parte da música “Alzira e a Torre”. Quem é o seu autor?',
     options: ["Alceu Valença", "Johnny Hooker", "Lenine"],
     correct: 2,
     mediaAfter: '/alzira.mp4'
@@ -49,14 +49,14 @@ export const QUESTIONS: Question[] = [
     id: 6,
     image: '/clarice.png',
     question:
-      "A escritora Clarice Lispector morou parte da sua infância no centro do Recife. Em frente ao qual praça do bairro da Boa Vista fica a casa em que a autora morou?",
+    'A escritora Clarice Lispector viveu parte da sua infância no centro do Recife. Em frente a qual praça do bairro da Boa Vista fica a casa em que a autora morou?',
     options: ["Praça Chora Menino", "Praça Maciel Pinheiro", "Praça de Casa Forte"],
     correct: 1,
   },
   {
     id: 7,
     question:
-      'Uma das músicas mais famosas de Alceu Valença fala de uma moça bonita em uma das praias do Recife. Em qual praia está "La Belle de Jour"?',
+      'Uma das músicas mais famosas de Alceu Valença fala de uma moça bonita em uma das praias do Recife. Em qual praia está “La Belle de Jour”?',
     options: ["Praia do Pina", "Praia de Brasília Teimosa", "Praia de Boa Viagem"],
     correct: 2,
     mediaAfter: '/alceu.mp4'
@@ -80,7 +80,7 @@ export const QUESTIONS: Question[] = [
   {
     id: 11,
     question:
-      "Símbolo do Manguebeat, o caranguejo está representado através de duas grandes esculturas criadas para homenagear o movimento idealizado por Chico Science. Onde elas estão localizadas?",
+   'Símbolo do Manguebeat, o caranguejo está representado por duas grandes esculturas criadas para homenagear o movimento idealizado por Chico Science. Onde elas estão localizadas?',
     options: [
       "Rua do Riachuelo e Praça do Derby",
       "Rua da Aurora e Cais da Alfândega",
