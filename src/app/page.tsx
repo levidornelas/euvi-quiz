@@ -201,28 +201,28 @@ export default function RecifeQuiz() {
                 </div>
               </div>
               <div className="text-center px-4 mb-10">
-                <p className="text-4xl text-blue-800 mb-4 leading-snug">
+                <p className="text-3xl text-blue-800 mb-4 leading-snug">
                   Valeu por embarcar com a gente nesse passeio pela arte e pela memória do Recife!
                 </p>
-                <p className="text-4xl text-blue-800 mb-4 leading-snug">
+                <p className="text-3xl text-blue-800 mb-4 leading-snug">
                   Quer continuar essa viagem?
                 </p >
 
-                <p className="text-4xl text-blue-800 mb-4 leading-snug">
+                <p className="text-3xl text-blue-800 mb-4 leading-snug">
                   Aponte a câmera pro <strong>QR Code</strong> e acompanhe o <strong>Eu Vi!</strong>
                 </p >
                 <Image
                   src="/insta_qrcode.png"
                   alt="QR Code para seguir o Eu Vi no Instagram"
-                  width={320}
-                  height={320}
-                  className="mx-auto mt-10"
+                  width={300}
+                  height={300}
+                  className="mx-auto"
                 />
               </div>
               <div className="grid grid-cols-3 gap-8 mb-12">
                 {answers.map((correct, index) => (
-                  <div key={index} className="flex items-center justify-center p-8 bg-white rounded-xl shadow-lg">
-                    <span className="text-4xl font-semibold mr-4">Q{index + 1}:</span>
+                  <div key={index} className="flex items-center justify-center p-2 bg-white rounded-xl shadow-lg">
+                    <span className="text-3xl font-semibold mr-4">Q{index + 1}:</span>
                     {correct ? (
                       <CheckCircle className="h-16 w-16 text-green-500" />
                     ) : (
@@ -334,7 +334,7 @@ export default function RecifeQuiz() {
             )}
 
             <div className="mb-4">
-              <h2 className="text-3xl font-bold text-blue-800 mb-8 leading-relaxed text-center">{currentQuestion.question}</h2>
+              <h2 className="text-3xl font-semibold text-blue-800 mt-1 leading-relaxed text-center">{currentQuestion.question}</h2>
             </div>
 
             <div className="grid gap-6 mb-4">
