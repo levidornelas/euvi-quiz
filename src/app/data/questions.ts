@@ -26,6 +26,7 @@ export const QUESTIONS: Question[] = [
       '"Alzira bebendo vodka defronte da Torre Malakoff / Descobre que o chão do Recife afunda um milímetro a cada gole..." Quem é um dos compositores e cantor da música Alzira e A Torre?',
     options: ["Alceu Valença", "Johnny Hooker", "Lenine"],
     correct: 2,
+    mediaAfter: '/alzira.mp4'
   },
   {
     id: 4,
@@ -42,10 +43,11 @@ export const QUESTIONS: Question[] = [
       '"Vira Lata" é o nome da parceria de João Gomes e Pabllo Vittar. Em qual bairro da Zona Sul do Recife foi gravado o videoclipe da música?',
     options: ["Ipsep", "Ibura", "Jordão"],
     correct: 1,
-    mediaAfter:'/ibura.mp4'
+    mediaAfter: '/ibura.mp4'
   },
   {
     id: 6,
+    image: '/clarice.png',
     question:
       "A escritora Clarice Lispector morou parte da sua infância no centro do Recife. Em frente ao qual praça do bairro da Boa Vista fica a casa em que a autora morou?",
     options: ["Praça Chora Menino", "Praça Maciel Pinheiro", "Praça de Casa Forte"],
@@ -57,13 +59,7 @@ export const QUESTIONS: Question[] = [
       'Uma das músicas mais famosas de Alceu Valença fala de uma moça bonita em uma das praias do Recife. Em qual praia está "La Belle de Jour"?',
     options: ["Praia do Pina", "Praia de Brasília Teimosa", "Praia de Boa Viagem"],
     correct: 2,
-  },
-  {
-    id: 8,
-    question:
-      'O poema "O Cão sem Plumas", de João Cabral de Melo Neto, é uma metáfora sobre um importante rio que cruza a cidade do Recife. Que rio é esse?',
-    options: ["Rio Beberibe", "Rio Capibaribe", "Rio Tejipió"],
-    correct: 1,
+    mediaAfter: '/alceu.mp4'
   },
   {
     id: 9,
@@ -71,6 +67,7 @@ export const QUESTIONS: Question[] = [
       '"Eu vi o mundo... ele começava no Recife" é o nome da mais famosa pintura de Cícero Dias. O título da obra também está gravado na sua famosa Rosa dos Ventos, que fica no centro de uma famosa praça da cidade. Qual?',
     options: ["Praça do Marco Zero", "Praça do Derby", "Praça de Boa Viagem"],
     correct: 0,
+    mediaAfter: '/euvi.mp4'
   },
   {
     id: 10,
@@ -78,6 +75,7 @@ export const QUESTIONS: Question[] = [
       'Banda icônica da cena punk do Recife, a Devotos fez o público enxergar a efervescência cultural de um bairro da Zona Norte da Cidade. Esse bairro, inclusive, está no título de sua música mais famosa: "Punk Rock Hardcore..."?',
     options: ["Alto José do Pinho", "Alto Santa Terezinha", "Alto José Bonifácio"],
     correct: 0,
+    mediaAfter: '/devotos.mp4'
   },
   {
     id: 11,
@@ -89,11 +87,12 @@ export const QUESTIONS: Question[] = [
       "Avenida Conde da Boa Vista e Praça do Arsenal",
     ],
     correct: 1,
+    mediaAfter: 'chicoscience.mp4'
   },
 
   {
     id: 12,
-    image: '/joão cabral.png',
+    image: '/joaocabral-estatua.jpg',
     question:
       "O poema “O Cão sem Plumas”, de João Cabral de Melo Neto, é uma metáfora sobre um importante rio que cruza a cidade do Recife. Que rio é esse?",
     options: [
@@ -101,8 +100,7 @@ export const QUESTIONS: Question[] = [
       "Rio Capibaribe",
       "Rio Tejipió",
     ],
-    correct: 0,
-    mediaAfter: '/Cão-sem-plumas.mp4'
+    correct: 1,
   },
 
 ];

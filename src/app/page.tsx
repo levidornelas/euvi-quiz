@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Question } from "./types/question";
 import { QUESTIONS } from "./data/questions";
 import { Button } from "@/components/ui/button"
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, XCircle, RotateCcw, Play, ArrowBigRightDash } from "lucide-react"
@@ -123,11 +124,23 @@ export default function RecifeQuiz() {
             <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-12 shadow-2xl">
               <div className="flex items-center justify-center gap-12">
                 <div className="flex-1 flex justify-center">
-                  <img src="/logo_euvi.png" alt="Logo Eu Vi" className="h-40 object-contain" />
+                  <Image
+                    src="/logo_euvi.png"
+                    alt="Logo Eu Vi"
+                    width={200}
+                    height={160}
+                    className="object-contain"
+                    priority
+                  />
                 </div>
-                <div className="w-px h-24 bg-blue-200"></div>
+                <div className="w-px h-24 bg-blue-700"></div>
                 <div className="flex-1 flex justify-center">
-                  <img src="/prefeitura_logo.jpg" alt="Logo Prefeitura do Recife" className="h-28 object-contain" />
+                  <Image
+                    src="/logorecife.jpg"
+                    alt="Logo Prefeitura do Recife"
+                    width={350}
+                    height={112}
+                  />
                 </div>
               </div>
               <p className="text-center text-3xl text-blue-900 mt-6 font-bold">
@@ -172,32 +185,39 @@ export default function RecifeQuiz() {
           }`}>
           <Card className="w-full max-w-4xl bg-white/95 backdrop-blur-sm shadow-2xl">
             <CardContent className="p-8 text-center">
-              <h1 className="text-8xl font-bold text-blue-800 mb-12">Quiz Finalizado!</h1>
-              <div className="bg-blue-50 p-8 rounded-2xl mb-12">
+              <h1 className="text-8xl font-bold text-blue-800">Quiz Finalizado!</h1>
+              <div className="bg-blue-50 p-8 rounded-2xl">
                 <div className="text-9xl font-bold text-blue-800 mb-8">{score}/3</div>
-                <p className="text-4xl text-blue-800 leading-relaxed">
-                  {score === 3
-                    ? "Parabéns! Tu é arretado e sabe tudo sobre o Recife!"
-                    : score === 2
-                      ? "Bateu na trave! Tu é rochedo e quase que gabarita!"
-                      : score === 1
-                        ? "Quase lá! Acompanha o Eu Vi para continuar aprendendo mais sobre nossa cidade!"
-                        : "Quase lá! Acompanha o Eu Vi para continuar aprendendo mais sobre nossa cidade!"}
-                </p>
+                <div className="text-4xl text-blue-800 font-semibold">
+                  <p className="">
+                    {score === 3
+                      ? "Parabéns! Tu é arretado e sabe tudo sobre o Recife!"
+                      : score === 2
+                        ? "Bateu na trave! Tu é rochedo e quase que gabarita!"
+                        : score === 1
+                          ? "Quase lá! Acompanha o Eu Vi para continuar aprendendo mais sobre nossa cidade!"
+                          : "Quase lá! Acompanha o Eu Vi para continuar aprendendo mais sobre nossa cidade!"}
+                  </p>
+                </div>
               </div>
-              <div  className="mt-6 text-center px-4 mb-10">
-               <p  className="text-4xl text-blue-800 mb-4 leading-snug">
-                Valeu por embarcar com a gente nesse passeio pela arte e pela memória do Recife! 
+              <div className="text-center px-4 mb-10">
+                <p className="text-4xl text-blue-800 mb-4 leading-snug">
+                  Valeu por embarcar com a gente nesse passeio pela arte e pela memória do Recife!
                 </p>
                 <p className="text-4xl text-blue-800 mb-4 leading-snug">
-                Quer continuar essa viagem? 
+                  Quer continuar essa viagem?
                 </p >
 
                 <p className="text-4xl text-blue-800 mb-4 leading-snug">
-                Aponte a câmera pro QR Code e acompanhe o Eu Vi!
+                  Aponte a câmera pro <strong>QR Code</strong> e acompanhe o <strong>Eu Vi!</strong>
                 </p >
-                <img src='insta_qrcode.png'   className="mx-auto mt-10 w-40 h-60"/>
-
+                <Image
+                  src="/insta_qrcode.png"
+                  alt="QR Code para seguir o Eu Vi no Instagram"
+                  width={320}
+                  height={320}
+                  className="mx-auto mt-10"
+                />
               </div>
               <div className="grid grid-cols-3 gap-8 mb-12">
                 {answers.map((correct, index) => (
@@ -264,11 +284,21 @@ export default function RecifeQuiz() {
             <div className="w-full max-w-6xl mx-auto">
               <div className="flex items-center justify-center gap-12">
                 <div className="flex-1 flex justify-center">
-                  <img src="/logo_euvi.png" alt="Logo Eu Vi" className="h-38 object-contain" />
+                  <Image
+                    src="/logo_euvi.png"
+                    alt="Logo Eu Vi"
+                    width={200}
+                    height={160}
+                  />
                 </div>
-                <div className="w-px h-24 bg-blue-200"></div>
+                <div className="w-px h-24 bg-blue-400"></div>
                 <div className="flex-1 flex justify-center">
-                  <img src="/prefeitura_logo.jpg" alt="Logo Prefeitura do Recife" className="h-24 object-contain" />
+                  <Image
+                    src="/logorecife.jpg"
+                    alt="Logo Prefeitura do Recife"
+                    width={300}
+                    height={112}
+                  />
                 </div>
               </div>
             </div>
@@ -292,10 +322,12 @@ export default function RecifeQuiz() {
             {currentQuestion.image && (
               <div className="flex justify-center items-center">
                 <div className="relative w-full max-w-3xl h-66 rounded-2xl overflow-hidden shadow-xl">
-                  <img
-                    src={currentQuestion.image || "/placeholder.svg"}
+                  <Image
+                    src={currentQuestion.image}
                     alt="Imagem relacionada à pergunta"
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
               </div>
