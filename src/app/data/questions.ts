@@ -49,7 +49,7 @@ export const QUESTIONS: Question[] = [
     id: 6,
     image: '/clarice.png',
     question:
-    'A escritora Clarice Lispector viveu parte da sua infância no centro do Recife. Em frente a qual praça do bairro da Boa Vista fica a casa em que a autora morou?',
+      'A escritora Clarice Lispector viveu parte da sua infância no centro do Recife. Em frente a qual praça do bairro da Boa Vista fica a casa em que a autora morou?',
     options: ["Praça Chora Menino", "Praça Maciel Pinheiro", "Praça de Casa Forte"],
     correct: 1,
   },
@@ -79,8 +79,9 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 11,
+    image: '/caranguejos.png',
     question:
-   'Símbolo do Manguebeat, o caranguejo está representado por duas grandes esculturas criadas para homenagear o movimento idealizado por Chico Science. Onde elas estão localizadas?',
+      'Símbolo do Manguebeat, o caranguejo está representado por duas grandes esculturas criadas para homenagear o movimento idealizado por Chico Science. Onde elas estão localizadas?',
     options: [
       "Rua do Riachuelo e Praça do Derby",
       "Rua da Aurora e Cais da Alfândega",
