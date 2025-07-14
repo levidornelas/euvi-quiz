@@ -9,7 +9,6 @@ export const QUESTIONS: Question[] = [
       '“Aquarius” narra a história de uma mulher que enfrenta pressão de uma construtora para deixar o prédio em que vive. O filme de Kleber Mendonça Filho foi gravado no Edf. Oceania, localizado em qual bairro?',
     options: ["Boa Viagem", "Pina", "Candeias"],
     correct: 1,
-    mediaAfter: '/aquarius.mp4'
   },
   {
     id: 2,
@@ -26,7 +25,6 @@ export const QUESTIONS: Question[] = [
       'Os versos “Alzira bebendo vodka defronte da Torre Malakoff / Descobre que o chão do Recife afunda um milímetro a cada gole...” fazem parte da música “Alzira e a Torre”. Quem é o seu autor?',
     options: ["Alceu Valença", "Johnny Hooker", "Lenine"],
     correct: 2,
-    mediaAfter: '/alzira.mp4'
   },
   {
     id: 4,
@@ -34,8 +32,8 @@ export const QUESTIONS: Question[] = [
     question:
       "O Pátio de Santo Cruz foi cenário para qual filme que conta a história de amor entre uma menina apaixonada por cinema e um malandro forasteiro?",
     options: ["Lisbela e o Prisioneiro", "Cine Holliúdy", "O Auto da Compadecida"],
-    correct: 0,
-    mediaAfter: '/patio.mp4'
+    correct: 0
+
   },
   {
     id: 5,
@@ -43,7 +41,6 @@ export const QUESTIONS: Question[] = [
       '"Vira Lata" é o nome da parceria de João Gomes e Pabllo Vittar. Em qual bairro da Zona Sul do Recife foi gravado o videoclipe da música?',
     options: ["Ipsep", "Ibura", "Jordão"],
     correct: 1,
-    mediaAfter: '/ibura.mp4'
   },
   {
     id: 6,
@@ -59,7 +56,6 @@ export const QUESTIONS: Question[] = [
       'Uma das músicas mais famosas de Alceu Valença fala de uma moça bonita em uma das praias do Recife. Em qual praia está “La Belle de Jour”?',
     options: ["Praia do Pina", "Praia de Brasília Teimosa", "Praia de Boa Viagem"],
     correct: 2,
-    mediaAfter: '/alceu.mp4'
   },
   {
     id: 9,
@@ -67,7 +63,6 @@ export const QUESTIONS: Question[] = [
       '"Eu vi o mundo... ele começava no Recife" é o nome da mais famosa pintura de Cícero Dias. O título da obra também está gravado na sua famosa Rosa dos Ventos, que fica no centro de uma famosa praça da cidade. Qual?',
     options: ["Praça do Marco Zero", "Praça do Derby", "Praça de Boa Viagem"],
     correct: 0,
-    mediaAfter: '/euvi.mp4'
   },
   {
     id: 10,
@@ -75,7 +70,6 @@ export const QUESTIONS: Question[] = [
       'Banda icônica da cena punk do Recife, a Devotos fez o público enxergar a efervescência cultural de um bairro da Zona Norte da Cidade. Esse bairro, inclusive, está no título de sua música mais famosa: "Punk Rock Hardcore..."?',
     options: ["Alto José do Pinho", "Alto Santa Terezinha", "Alto José Bonifácio"],
     correct: 0,
-    mediaAfter: '/devotos.mp4'
   },
   {
     id: 11,
@@ -88,7 +82,6 @@ export const QUESTIONS: Question[] = [
       "Avenida Conde da Boa Vista e Praça do Arsenal",
     ],
     correct: 1,
-    mediaAfter: 'chicoscience.mp4'
   },
 
   {
