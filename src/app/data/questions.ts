@@ -37,6 +37,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 5,
+    image: '/viralata.jpg',
     question:
       '"Vira Lata" é o nome da parceria de João Gomes e Pabllo Vittar. Em qual bairro da Zona Sul do Recife foi gravado o videoclipe da música?',
     options: ["Ipsep", "Ibura", "Jordão"],

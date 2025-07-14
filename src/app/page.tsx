@@ -138,12 +138,13 @@ export default function RecifeQuiz() {
                   <Image
                     src="/logorecife.jpg"
                     alt="Logo Prefeitura do Recife"
-                    width={350}
-                    height={112}
+                    width={400}
+                    height={400}
+                    className="object-cover"
                   />
                 </div>
               </div>
-              <p className="text-center text-3xl text-blue-900 mt-6 font-bold">
+              <p className="text-center text-6xl text-blue-900 mt-6 font-bold">
                 Ciência também é memória, cultura e território
               </p>
             </div>
@@ -321,7 +322,7 @@ export default function RecifeQuiz() {
 
             {currentQuestion.image && (
               <div className="flex justify-center items-center">
-                <div className="relative w-full max-w-3xl h-66 rounded-2xl overflow-hidden shadow-xl">
+                <div className="relative w-full max-w-3xl h-78 rounded-2xl overflow-hidden shadow-xl">
                   <Image
                     src={currentQuestion.image}
                     alt="Imagem relacionada à pergunta"
