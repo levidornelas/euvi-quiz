@@ -1,118 +1,36 @@
 'use client'
-import { useState } from "react";
-import { Question } from "./types/question";
-import { QUESTIONS } from "./data/questions";
 import { Button } from "@/components/ui/button"
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, XCircle, RotateCcw, Play, ArrowBigRightDash } from "lucide-react"
+import { useQuiz } from "./hooks/useQuiz";
+import { backgroundClasses } from "./utils/background-classes";
+import { getButtonClass } from "./utils/get-button-class";
+import { getScoreMessage } from "./utils/get-score-message";
 
 export default function RecifeQuiz() {
-  const [gameState, setGameState] = useState<"start" | "playing" | "finished">("start")
-  const [selectedQuestions, setSelectedQuestions] = useState<Question[]>([])
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
-  const [showResult, setShowResult] = useState(false)
-  const [score, setScore] = useState(0)
-  const [answers, setAnswers] = useState<boolean[]>([])
-  const [showVideo, setShowVideo] = useState(false)
-  const [videoFadeOut, setVideoFadeOut] = useState(false)
-  const [videoFadeIn, setVideoFadeIn] = useState(false)
-  const [questionFadeOut, setQuestionFadeOut] = useState(false)
-
-  // Estados para controlar fade das telas principais
-  const [startScreenFadeOut, setStartScreenFadeOut] = useState(false)
-  const [finishedScreenFadeOut, setFinishedScreenFadeOut] = useState(false)
-  const [playingScreenFadeOut, setPlayingScreenFadeOut] = useState(false)
-
-  const selectRandomQuestions = () => {
-    const shuffled = [...QUESTIONS].sort(() => 0.5 - Math.random())
-    return shuffled.slice(0, 3)
-  }
-
-  const startQuiz = () => {
-    setStartScreenFadeOut(true)
-
-    setTimeout(() => {
-      const questions = selectRandomQuestions()
-      setSelectedQuestions(questions)
-      setGameState("playing")
-      setCurrentQuestionIndex(0)
-      setScore(0)
-      setAnswers([])
-      setSelectedAnswer(null)
-      setShowResult(false)
-      setStartScreenFadeOut(false)
-    }, 300)
-  }
-
-  const handleAnswerSelect = (indexResposta: number) => {
-    if (selectedAnswer !== null) return
-
-    setSelectedAnswer(indexResposta)
-    setShowResult(true)
-
-    const isCorrect = indexResposta === selectedQuestions[currentQuestionIndex].correct
-    if (isCorrect) {
-      setScore(score + 1)
-    }
-    setAnswers([...answers, isCorrect])
-
-    const current = selectedQuestions[currentQuestionIndex]
-    if (current.mediaAfter) {
-      setTimeout(() => {
-        setShowVideo(true)
-        setTimeout(() => {
-          setVideoFadeIn(true)
-        }, 50)
-      }, 500)
-    }
-  }
-
-  const nextQuestion = () => {
-    if (currentQuestionIndex < selectedQuestions.length - 1) {
-      setQuestionFadeOut(true)
-
-      setTimeout(() => {
-        setCurrentQuestionIndex(currentQuestionIndex + 1)
-        setSelectedAnswer(null)
-        setShowResult(false)
-        setVideoFadeOut(false)
-        setVideoFadeIn(false)
-        setQuestionFadeOut(false)
-      }, 300)
-    } else {
-      // Transição para tela final
-      setPlayingScreenFadeOut(true)
-      setTimeout(() => {
-        setGameState("finished")
-        setPlayingScreenFadeOut(false)
-      }, 300)
-    }
-  }
-
-  const resetQuiz = () => {
-    setFinishedScreenFadeOut(true)
-    setTimeout(() => {
-      setGameState("start")
-      setSelectedQuestions([])
-      setCurrentQuestionIndex(0)
-      setSelectedAnswer(null)
-      setShowResult(false)
-      setScore(0)
-      setAnswers([])
-      setShowVideo(false)
-      setVideoFadeIn(false)
-      setQuestionFadeOut(false)
-      setFinishedScreenFadeOut(false)
-    }, 300)
-  }
-
-  const currentQuestion = selectedQuestions[currentQuestionIndex]
-
-  // Fundo fixo que sempre mantém o gradiente
-  const backgroundClasses = "fixed inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 -z-10"
+  const {
+    gameState,
+    currentQuestionIndex,
+    selectedAnswer,
+    showResult,
+    score,
+    answers,
+    currentQuestion,
+    showVideo,
+    videoFadeOut,
+    videoFadeIn,
+    questionFadeOut,
+    startScreenFadeOut,
+    finishedScreenFadeOut,
+    playingScreenFadeOut,
+    startQuiz,
+    handleAnswerSelect,
+    nextQuestion,
+    resetQuiz,
+    hideVideo,
+  } = useQuiz();
 
   if (gameState === "start") {
     return (
@@ -144,7 +62,7 @@ export default function RecifeQuiz() {
                   />
                 </div>
               </div>
-              <p className="text-center text-6xl text-blue-900 mt-6 font-bold">
+              <p className="text-center text-6xl text-blue-800 mt-6 font-bold">
                 Ciência também é memória, cultura e território
               </p>
             </div>
@@ -175,7 +93,7 @@ export default function RecifeQuiz() {
           </Card>
         </div>
       </>
-    )
+    );
   }
 
   if (gameState === "finished") {
@@ -190,15 +108,7 @@ export default function RecifeQuiz() {
               <div className="bg-blue-50 p-8 rounded-2xl">
                 <div className="text-5xl font-bold text-blue-800 mb-8">{score}/3</div>
                 <div className="text-3xl text-blue-800 font-semibold">
-                  <p className="">
-                    {score === 3
-                      ? "Parabéns! Tu é arretado e sabe tudo sobre o Recife!"
-                      : score === 2
-                        ? "Bateu na trave! Tu é rochedo e quase que gabarita!"
-                        : score === 1
-                          ? "Quase lá! Acompanha o Eu Vi para continuar aprendendo mais sobre nossa cidade!"
-                          : "Quase lá! Acompanha o Eu Vi para continuar aprendendo mais sobre nossa cidade!"}
-                  </p>
+                  <p>{getScoreMessage(score)}</p>
                 </div>
               </div>
               <div className="text-center px-4 mb-10">
@@ -207,11 +117,10 @@ export default function RecifeQuiz() {
                 </p>
                 <p className="text-3xl text-blue-800 mb-4 leading-snug">
                   Quer continuar essa viagem?
-                </p >
-
+                </p>
                 <p className="text-3xl text-blue-800 mb-4 leading-snug">
                   Aponte a câmera pro <strong>QR Code</strong> e acompanhe o <strong>Eu Vi!</strong>
-                </p >
+                </p>
                 <Image
                   src="/insta_qrcode.png"
                   alt="QR Code para seguir o Eu Vi no Instagram"
@@ -244,7 +153,7 @@ export default function RecifeQuiz() {
           </Card>
         </div>
       </>
-    )
+    );
   }
 
   return (
@@ -255,25 +164,14 @@ export default function RecifeQuiz() {
         {showVideo && currentQuestion.mediaAfter && (
           <div className={`fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center transition-opacity duration-500 ${videoFadeOut ? 'opacity-0' : (videoFadeIn ? 'opacity-100' : 'opacity-0')
             }`}>
-            <div className={`bg-white rounded-xl overflow-hidden max-w-4xl w-full transition-all duration-500 transform ${videoFadeOut
-              ? 'opacity-0 scale-95'
-              : videoFadeIn
-                ? 'opacity-100 scale-100'
-                : 'opacity-0 scale-95'
+            <div className={`bg-white rounded-xl overflow-hidden max-w-4xl w-full transition-all duration-500 transform ${videoFadeOut ? 'opacity-0 scale-95' : videoFadeIn ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
               }`}>
               <video
                 src={currentQuestion.mediaAfter}
                 controls
                 autoPlay
                 className="w-full h-full"
-                onEnded={() => {
-                  setVideoFadeOut(true)
-                  setTimeout(() => {
-                    setShowVideo(false)
-                    setVideoFadeOut(false)
-                    setVideoFadeIn(false)
-                  }, 500)
-                }}
+                onEnded={hideVideo}
               />
             </div>
           </div>
@@ -335,44 +233,30 @@ export default function RecifeQuiz() {
             )}
 
             <div>
-              <h2 className="text-3xl text-blue-800 font-semibold mt-2 leading-10 text-center">{currentQuestion.question}</h2>
+              <h2 className="text-3xl text-blue-800 font-semibold mt-2 leading-10 text-center">
+                {currentQuestion.question}
+              </h2>
             </div>
 
             <div className="grid gap-6 mb-4">
-              {currentQuestion.options.map((option, index) => {
-                let buttonClass = "text-3xl p-10 h-auto text-left justify-start transition-all duration-300 "
-
-                if (showResult) {
-                  if (index === currentQuestion.correct) {
-                    buttonClass += "bg-green-100 border-green-500 text-green-800 hover:bg-green-100"
-                  } else if (index === selectedAnswer) {
-                    buttonClass += "bg-red-100 border-red-500 text-red-800 hover:bg-red-100"
-                  } else {
-                    buttonClass += "bg-gray-100 text-gray-600 hover:bg-gray-100"
-                  }
-                } else {
-                  buttonClass += "bg-white border-blue-200 text-blue-900 hover:bg-blue-50 hover:border-blue-400"
-                }
-
-                return (
-                  <Button
-                    key={index}
-                    variant="outline"
-                    className={buttonClass}
-                    onClick={() => handleAnswerSelect(index)}
-                    disabled={showResult}
-                  >
-                    <span className="font-bold mr-6 text-3xl">{String.fromCharCode(65 + index)})</span>
-                    <span className="flex-1">{option}</span>
-                    {showResult && index === currentQuestion.correct && (
-                      <CheckCircle className="ml-auto h-12 w-12 text-green-600" />
-                    )}
-                    {showResult && index === selectedAnswer && index !== currentQuestion.correct && (
-                      <XCircle className="ml-auto h-12 w-12 text-red-600" />
-                    )}
-                  </Button>
-                )
-              })}
+              {currentQuestion.options.map((option, index) => (
+                <Button
+                  key={index}
+                  variant="outline"
+                  className={getButtonClass(index, currentQuestion.correct, selectedAnswer, showResult)}
+                  onClick={() => handleAnswerSelect(index)}
+                  disabled={showResult}
+                >
+                  <span className="font-bold mr-6 text-3xl">{String.fromCharCode(65 + index)})</span>
+                  <span className="flex-1">{option}</span>
+                  {showResult && index === currentQuestion.correct && (
+                    <CheckCircle className="ml-auto h-12 w-12 text-green-600" />
+                  )}
+                  {showResult && index === selectedAnswer && index !== currentQuestion.correct && (
+                    <XCircle className="ml-auto h-12 w-12 text-red-600" />
+                  )}
+                </Button>
+              ))}
             </div>
 
             {showResult && (
@@ -382,7 +266,7 @@ export default function RecifeQuiz() {
                   className="text-3xl px-16 py-12 rounded-3xl bg-blue-800 hover:bg-blue-700 text-white min-w-[400px]"
                 >
                   <ArrowBigRightDash className="mr-4 h-12 w-12" />
-                  {currentQuestionIndex < selectedQuestions.length - 1 ? "Próxima Pergunta" : "Ver Resultado"}
+                  {currentQuestionIndex < 2 ? "Próxima Pergunta" : "Ver Resultado"}
                 </Button>
               </div>
             )}
@@ -390,5 +274,5 @@ export default function RecifeQuiz() {
         </Card>
       </div>
     </>
-  )
+  );
 }

@@ -53,6 +53,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 7,
+    image: '/boaviagem.jpg',
     question:
       'Uma das músicas mais famosas de Alceu Valença fala de uma moça bonita em uma das praias do Recife. Em qual praia está “La Belle de Jour”?',
     options: ["Praia do Pina", "Praia de Brasília Teimosa", "Praia de Boa Viagem"],
@@ -60,6 +61,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 9,
+    image: '/cicero.jpg',
     question:
       '"Eu vi o mundo... ele começava no Recife" é o nome da mais famosa pintura de Cícero Dias. O título da obra também está gravado na sua famosa Rosa dos Ventos, que fica no centro de uma famosa praça da cidade. Qual?',
     options: ["Praça do Marco Zero", "Praça do Derby", "Praça de Boa Viagem"],
@@ -67,6 +69,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 10,
+    image: '/devotos.webp',
     question:
       'Banda icônica da cena punk do Recife, a Devotos fez o público enxergar a efervescência cultural de um bairro da Zona Norte da Cidade. Esse bairro, inclusive, está no título de sua música mais famosa: "Punk Rock Hardcore..."?',
     options: ["Alto José do Pinho", "Alto Santa Terezinha", "Alto José Bonifácio"],
