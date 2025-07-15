@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Question } from "../types/question";
 import { QUESTIONS } from "../data/questions";
+import { useVercelAnalytics } from "./useAnalytics";
 
 export type GameState = "start" | "playing" | "finished";
 
 export const useQuiz = () => {
+  const analytics = useVercelAnalytics();
+
   // Estados do jogo
   const [gameState, setGameState] = useState<GameState>("start");
   const [selectedQuestions, setSelectedQuestions] = useState<Question[]>([]);
@@ -29,6 +32,8 @@ export const useQuiz = () => {
   };
 
   const startQuiz = () => {
+    analytics.trackQuizStart();
+
     setStartScreenFadeOut(true);
     setTimeout(() => {
       const questions = selectRandomQuestions();
@@ -50,6 +55,7 @@ export const useQuiz = () => {
     setShowResult(true);
 
     const isCorrect = indexResposta === selectedQuestions[currentQuestionIndex].correct;
+
     if (isCorrect) {
       setScore(score + 1);
     }
