@@ -54,10 +54,10 @@ export default function RecifeQuiz() {
                 <div className="w-px h-24 bg-blue-700"></div>
                 <div className="flex-1 flex justify-center">
                   <Image
-                    src="/logorecife.jpg"
+                    src="/logorecife.webp"
                     alt="Logo Prefeitura do Recife"
-                    width={400}
-                    height={400}
+                    width={150}
+                    height={150}
                     className="object-cover"
                   />
                 </div>
@@ -73,7 +73,7 @@ export default function RecifeQuiz() {
               <div className="mb-8">
                 <h1 className="text-7xl font-bold text-blue-800 mb-4">Você viu?</h1>
                 <div className="bg-blue-50 p-10 rounded-2xl">
-                  <p className="text-3xl text-blue-800">
+                  <p className="text-4xl text-blue-800">
                     Chegou a hora de testar o quanto você conhece do Recife que vive nas artes! <br /><br />
                     <span className="font-semibold text-blue-900">
                       Cultura, memória e arte em forma de quiz.
@@ -115,7 +115,7 @@ export default function RecifeQuiz() {
                 <p className="text-3xl text-blue-800 mb-4 leading-snug">
                   Valeu por embarcar com a gente nesse passeio pela arte e pela memória do Recife!
                 </p>
-                <p className="text-3xl text-blue-800 mb-4 leading-snug">
+                <p className="text-3xl text-blue-800 mb-4 leading-snug font-semibold">
                   Quer continuar essa viagem?
                 </p>
                 <p className="text-3xl text-blue-800 mb-4 leading-snug">
@@ -193,10 +193,10 @@ export default function RecifeQuiz() {
                 <div className="w-px h-24 bg-blue-400"></div>
                 <div className="flex-1 flex justify-center">
                   <Image
-                    src="/logorecife.jpg"
+                    src="/logorecife.webp"
                     alt="Logo Prefeitura do Recife"
-                    width={300}
-                    height={112}
+                    width={150}
+                    height={150}
                   />
                 </div>
               </div>
@@ -233,7 +233,7 @@ export default function RecifeQuiz() {
             )}
 
             <div>
-              <h2 className="text-3xl text-blue-800 font-semibold mt-2 leading-10 text-center">
+              <h2 className="text-3xl text-blue-800 font-semibold mt-4 mb-4 leading-10 text-center">
                 {currentQuestion.question}
               </h2>
             </div>
