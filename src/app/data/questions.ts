@@ -14,7 +14,7 @@ export const QUESTIONS: Question[] = [
     id: 2,
     image: '/boivoador.jpg',
     question:
-      'A tela "Boi Voador" retrata um episódio histórico da época o Recife ficou sob o domínio holandês. Em qual ponte se passa a história que inspirou o quadro de Tereza Costa Rêgo?',
+      'A tela "Boi Voador" retrata um episódio histórico da época em que o Recife ficou sob o domínio holandês. Em qual ponte se passa a história que inspirou o quadro de Tereza Costa Rêgo?',
     options: ["Ponte da Boa Vista (Ponte de Ferro)", "Ponte Buarque de Macêdo", "Ponte Mauricio de Nassau"],
     correct: 2,
   },
@@ -30,7 +30,7 @@ export const QUESTIONS: Question[] = [
     id: 4,
     image: '/ptstacruz.jpg',
     question:
-      "O Pátio de Santo Cruz foi cenário para qual filme que conta a história de amor entre uma menina apaixonada por cinema e um malandro forasteiro?",
+      "O Pátio de Santa Cruz foi cenário para qual filme que conta a história de amor entre uma menina apaixonada por cinema e um malandro forasteiro?",
     options: ["Lisbela e o Prisioneiro", "Cine Holliúdy", "O Auto da Compadecida"],
     correct: 0
 
@@ -75,6 +75,19 @@ export const QUESTIONS: Question[] = [
     options: ["Alto José do Pinho", "Alto Santa Terezinha", "Alto José Bonifácio"],
     correct: 0,
   },
+  {
+    id: 11,
+    image: '/caranguejos.png',
+    question:
+      'Símbolo do Manguebeat, o caranguejo está representado por duas grandes esculturas criadas para homenagear o movimento idealizado por Chico Science. Onde elas estão localizadas?',
+    options: [
+      "Rua do Riachuelo e Praça do Derby",
+      "Rua da Aurora e Cais da Alfândega",
+      "Avenida Conde da Boa Vista e Praça do Arsenal",
+    ],
+    correct: 1,
+  },
+
   {
     id: 12,
     image: '/joaocabral-estatua.jpg',
