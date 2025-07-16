@@ -77,19 +77,6 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 11,
-    image: '/caranguejos.png',
-    question:
-      'Símbolo do Manguebeat, o caranguejo está representado por duas grandes esculturas criadas para homenagear o movimento idealizado por Chico Science. Onde elas estão localizadas?',
-    options: [
-      "Rua do Riachuelo e Praça do Derby",
-      "Rua da Aurora e Cais da Alfândega",
-      "Avenida Conde da Boa Vista e Praça do Arsenal",
-    ],
-    correct: 1,
-  },
-
-  {
-    id: 12,
     image: '/joaocabral-estatua.jpg',
     question:
       "O poema “O Cão sem Plumas”, de João Cabral de Melo Neto, é uma metáfora sobre um importante rio que cruza a cidade do Recife. Que rio é esse?",
