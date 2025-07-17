@@ -8,8 +8,32 @@ import { useQuiz } from "./hooks/useQuiz";
 import { backgroundClasses } from "./utils/background-classes";
 import { getButtonClass } from "./utils/get-button-class";
 import { getScoreMessage } from "./utils/get-score-message";
+import { useEffect, useState } from "react";
 
 export default function RecifeQuiz() {
+  const bgImages = [
+    '/frevo.png',
+    '/rosa.png',
+    '/artes.png'
+  ]
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prevIndex: number) => (prevIndex + 1) % bgImages.length);
+    }, 4000); 
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const dynamicBackgroundStyle = {
+    backgroundImage: `url(${bgImages[currentBgIndex]})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  };
+
   const {
     gameState,
     currentQuestionIndex,
@@ -35,7 +59,9 @@ export default function RecifeQuiz() {
   if (gameState === "start") {
     return (
       <>
-        <div className={backgroundClasses} />
+        <div className="fixed inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 transition-all duration-2000 ease-in-out -z-10"
+          style={dynamicBackgroundStyle}
+        />
         <div className={`min-h-screen flex flex-col items-center justify-center p-8 transition-all duration-300 ${startScreenFadeOut ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
           }`}>
           <div className="w-full max-w-4xl mb-12">
@@ -68,7 +94,7 @@ export default function RecifeQuiz() {
             </div>
           </div>
 
-          <Card className="w-full max-w-4xl bg-white/95 backdrop-blur-sm shadow-2xl">
+          <Card className="w-full max-w-4xl bg-white/95 backdrop-blur-sm shadow-2xl mb-18">
             <CardContent className="p-12 text-center w-full">
               <div className="mb-8">
                 <h1 className="text-7xl font-bold text-blue-800 mb-4">Você viu?</h1>
