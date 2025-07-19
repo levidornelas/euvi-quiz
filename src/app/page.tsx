@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle, XCircle, RotateCcw, Play, ArrowBigRightDash } from "lucide-react"
+import { CheckCircle, XCircle, RotateCcw, Play, ArrowBigRightDash, ClipboardPaste } from "lucide-react"
 import { useQuiz } from "./hooks/useQuiz";
 import { backgroundClasses } from "./utils/background-classes";
 import { getButtonClass } from "./utils/get-button-class";
@@ -140,17 +140,35 @@ export default function RecifeQuiz() {
           <Card className="w-full max-w-xl lg:max-w-3xl bg-white/95 backdrop-blur-sm shadow-2xl">
             <CardContent className="p-6 text-center">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-800">Quiz Finalizado!</h1>
+
               <div className="bg-blue-50 p-6 rounded-lg">
-                <div className="text-4xl md:text-5xl font-bold text-blue-800 mb-2">{score}/3</div>
+                <div className="text-4xl md:text-4xl font-bold text-blue-800 mb-2">{score}/3</div>
                 <div className="text-lg md:text-xl lg:text-2xl text-blue-800 font-semibold">
                   <p>{getScoreMessage(score)}</p>
                 </div>
               </div>
-              <div className="text-center px-2">
-                <p className="text-base md:text-lg lg:text-xl font-semibold text-blue-800 mb-4 leading-snug">
-                  Valeu por embarcar com a gente nesse passeio pela arte e pela memória do Recife!
+              <div className="mb-8">
+                <h2 className="text-lg md:text-xl font-semibold text-blue-800 mb-2">
+                  Vem construir esse projeto com a gente!
+                </h2>
+                <p className="text-lg font-semibold text-blue-800 mb-4 flex align-middle justify-center">
+                  Preencha esse formulário e nos ajude a mapear o Recife que vive nas artes.💙
                 </p>
+                <Button
+                  asChild
+                  className="text-base md:text-lg px-6 py-6 rounded-lg bg-blue-800 hover:bg-blue-700 text-white"
+                >
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSePWVMjSIiinCMMf7M1X5C0FfjcyrnedBjbcWCy4Kr_TIlJdA/viewform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ClipboardPaste className="mr-2 h-5 w-5" />
+                    Responder o formulário
+                  </a>
+                </Button>
               </div>
+
               <div className="grid grid-cols-3 gap-4 mb-8">
                 {answers.map((correct, index) => (
                   <div key={index} className="flex items-center justify-center p-1 bg-white rounded-lg shadow-lg">
@@ -163,6 +181,7 @@ export default function RecifeQuiz() {
                   </div>
                 ))}
               </div>
+
               <Button
                 onClick={resetQuiz}
                 size="lg"
