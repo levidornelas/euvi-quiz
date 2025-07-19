@@ -11,26 +11,38 @@ import { getScoreMessage } from "./utils/get-score-message";
 import { useEffect, useState } from "react";
 
 export default function RecifeQuiz() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+
   const bgImages = [
     '/frevo.png',
     '/rosa.png',
     '/artes.png'
   ]
-  const [currentBgIndex, setCurrentBgIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentBgIndex((prevIndex: number) => (prevIndex + 1) % bgImages.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const dynamicBackgroundStyle = {
     backgroundImage: `url(${bgImages[currentBgIndex]})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat'
   };
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkScreenSize();
+
+    window.addEventListener('resize', checkScreenSize);
+
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prevIndex: number) => (prevIndex + 1) % bgImages.length);
+    }, 4000);
+
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+      clearInterval(interval);
+    };
+  }, []);
 
   const {
     gameState,
@@ -59,7 +71,7 @@ export default function RecifeQuiz() {
       <>
         <div
           className="fixed inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 transition-all duration-2000 ease-in-out -z-10"
-          style={dynamicBackgroundStyle}
+          style={isMobile ? dynamicBackgroundStyle : {}}
         />
         <div className={`min-h-screen flex flex-col items-center justify-center p-4 transition-all duration-300 ${startScreenFadeOut ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
           }`}>
