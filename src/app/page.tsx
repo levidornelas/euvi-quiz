@@ -29,7 +29,6 @@ export default function RecifeQuiz() {
   const dynamicBackgroundStyle = {
     backgroundImage: `url(${bgImages[currentBgIndex]})`,
     backgroundSize: 'cover',
-    backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'
   };
 
@@ -60,7 +59,7 @@ export default function RecifeQuiz() {
       <>
         <div
           className="fixed inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 transition-all duration-2000 ease-in-out -z-10"
-          style={window.innerWidth < 1000 ? dynamicBackgroundStyle : {}}
+          style={dynamicBackgroundStyle}
         />
         <div className={`min-h-screen flex flex-col items-center justify-center p-4 transition-all duration-300 ${startScreenFadeOut ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
           }`}>
