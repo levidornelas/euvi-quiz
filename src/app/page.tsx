@@ -128,29 +128,16 @@ export default function RecifeQuiz() {
           <Card className="w-full max-w-xl lg:max-w-3xl bg-white/95 backdrop-blur-sm shadow-2xl">
             <CardContent className="p-6 text-center">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-800">Quiz Finalizado!</h1>
-              <div className="bg-blue-50 p-6 rounded-lg mt-4">
-                <div className="text-4xl md:text-5xl font-bold text-blue-800 mb-4">{score}/3</div>
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <div className="text-4xl md:text-5xl font-bold text-blue-800 mb-2">{score}/3</div>
                 <div className="text-lg md:text-xl lg:text-2xl text-blue-800 font-semibold">
                   <p>{getScoreMessage(score)}</p>
                 </div>
               </div>
-              <div className="text-center px-2 mb-6 mt-4">
-                <p className="text-base md:text-lg lg:text-xl text-blue-800 mb-2 leading-snug">
+              <div className="text-center px-2">
+                <p className="text-base md:text-lg lg:text-xl font-semibold text-blue-800 mb-4 leading-snug">
                   Valeu por embarcar com a gente nesse passeio pela arte e pela memória do Recife!
                 </p>
-                <p className="text-base md:text-lg lg:text-xl text-blue-800 mb-2 leading-snug font-semibold">
-                  Quer continuar essa viagem?
-                </p>
-                <p className="text-base md:text-lg lg:text-xl text-blue-800 mb-2 leading-snug">
-                  Aponte a câmera pro <strong>QR Code</strong> e acompanhe o <strong>Eu Vi!</strong>
-                </p>
-                <Image
-                  src="/insta_qrcode.png"
-                  alt="QR Code para seguir o Eu Vi no Instagram"
-                  width={150}
-                  height={150}
-                  className="mx-auto"
-                />
               </div>
               <div className="grid grid-cols-3 gap-4 mb-8">
                 {answers.map((correct, index) => (
@@ -242,21 +229,20 @@ export default function RecifeQuiz() {
             </div>
 
             {currentQuestion.image && (
-              <div className="flex justify-center items-center mb-4">
+              <div className="flex justify-center items-center">
                 <div className="relative w-full max-w-xs md:max-w-md lg:max-w-lg h-40 md:h-56 lg:h-64 rounded-lg overflow-hidden shadow-xl">
                   <Image
                     src={currentQuestion.image}
                     alt="Imagem relacionada à pergunta"
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
               </div>
             )}
 
             <div>
-              <h2 className="text-lg md:text-xl lg:text-2xl text-blue-800 font-semibold mt-2 mb-2 leading-normal text-center">
+              <h2 className="text-sm md:text-xl lg:text-2xl sm:text-xl text-blue-800 font-semibold mt-1 leading-normal text-center">
                 {currentQuestion.question}
               </h2>
             </div>
