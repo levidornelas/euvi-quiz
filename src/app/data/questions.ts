@@ -63,7 +63,7 @@ export const QUESTIONS: Question[] = [
     id: 9,
     image: '/cicero.jpg',
     question:
-      '"Eu vi o mundo... ele começava no Recife" é o nome da mais famosa pintura de Cícero Dias. O título da obra também está gravado na sua famosa Rosa dos Ventos, que fica no centro de uma famosa praça da cidade. Qual?',
+      '"Eu vi o mundo... ele começava no Recife" é o nome da mais famosa pintura de Cícero Dias. O título da obra também está gravado na sua Rosa dos Ventos, que fica no centro de uma conhecida praça da cidade. Qual?',
     options: ["Praça do Marco Zero", "Praça do Derby", "Praça de Boa Viagem"],
     correct: 0,
   },
