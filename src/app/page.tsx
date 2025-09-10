@@ -1,46 +1,39 @@
-'use client'
-import { Button } from "@/components/ui/button"
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { CheckCircle, XCircle, RotateCcw, Play, ArrowBigRightDash, ClipboardPaste } 
-from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  CheckCircle, XCircle, RotateCcw, Play, ArrowBigRightDash, ClipboardPaste
+} from "lucide-react";
 import { useQuiz } from "./hooks/useQuiz";
 import { backgroundClasses } from "./utils/background-classes";
 import { getButtonClass } from "./utils/get-button-class";
 import { getScoreMessage } from "./utils/get-score-message";
-import { useEffect, useState } from "react";
 
 export default function RecifeQuiz() {
   const [isMobile, setIsMobile] = useState(false);
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
 
-  const bgImages = [
-    '/frevo.png',
-    '/rosa.png',
-    '/artes.png'
-  ]
-
+  const bgImages = ["/frevo.png", "/rosa.png", "/artes.png"];
   const dynamicBackgroundStyle = {
     backgroundImage: `url(${bgImages[currentBgIndex]})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat'
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
   };
 
   useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
+    const checkScreenSize = () => setIsMobile(window.innerWidth < 640);
     checkScreenSize();
-
-    window.addEventListener('resize', checkScreenSize);
-
-    const interval = setInterval(() => {
-      setCurrentBgIndex((prevIndex: number) => (prevIndex + 1) % bgImages.length);
-    }, 4000);
-
+    window.addEventListener("resize", checkScreenSize);
+    const interval = setInterval(
+      () => setCurrentBgIndex((i) => (i + 1) % bgImages.length),
+      4000
+    );
     return () => {
-      window.removeEventListener('resize', checkScreenSize);
+      window.removeEventListener("resize", checkScreenSize);
       clearInterval(interval);
     };
   }, []);
@@ -67,6 +60,14 @@ export default function RecifeQuiz() {
     hideVideo,
   } = useQuiz();
 
+  // ==== refs para rolar a alternativa focada ao centro ====
+  const optionRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  useEffect(() => {
+    if (selectedAnswer == null) return;
+    const el = optionRefs.current[selectedAnswer];
+    if (el) el.scrollIntoView({ block: "center", behavior: "smooth" });
+  }, [selectedAnswer]);
+
   if (gameState === "start") {
     return (
       <>
@@ -74,28 +75,20 @@ export default function RecifeQuiz() {
           className="fixed inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 transition-all duration-2000 ease-in-out -z-10"
           style={isMobile ? dynamicBackgroundStyle : {}}
         />
-        <div className={`min-h-screen flex flex-col items-center justify-center p-4 transition-all duration-300 ${startScreenFadeOut ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
-          }`}>
+        <div
+          className={`min-h-screen flex flex-col items-center justify-center p-4 transition-all duration-300 ${
+            startScreenFadeOut ? "opacity-0 transform scale-95" : "opacity-100 transform scale-100"
+          }`}
+        >
           <div className="w-full 4k:max-w-[2300px] mb-6">
             <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-6 shadow-2xl">
               <div className="flex items-center justify-center gap-2">
                 <div className="flex-1 flex justify-center ">
-                  <Image
-                    src="/logo_euvi.png"
-                    alt="Logo Eu Vi"
-                    width={400}
-                    height={300}
-                    priority
-                  />
+                  <Image src="/logo_euvi.png" alt="Logo Eu Vi" width={400} height={300} priority />
                 </div>
                 <div className="w-px h-12 4k:h-80 bg-blue-700"></div>
                 <div className="flex-1 flex justify-center">
-                  <Image
-                    src="/logorecife.webp"
-                    alt="Logo Prefeitura do Recife"
-                    width={340}
-                    height={300}
-                  />
+                  <Image src="/logorecife.webp" alt="Logo Prefeitura do Recife" width={340} height={300} />
                 </div>
               </div>
               <p className="text-base 4k:text-[75px] text-blue-800 mt-4 font-bold text-center">
@@ -113,7 +106,8 @@ export default function RecifeQuiz() {
                     Chegou a hora de testar o quanto você conhece do Recife que vive nas artes! <br /><br />
                     <span className="font-semibold text-blue-900">
                       Cultura, memória e arte em forma de quiz.
-                    </span> <br /> <br />
+                    </span>{" "}
+                    <br /> <br />
                     Vai encarar? <span className="font-bold">Simbora!</span>
                   </p>
                 </div>
@@ -136,8 +130,11 @@ export default function RecifeQuiz() {
     return (
       <>
         <div className={backgroundClasses} />
-        <div className={`min-h-screen flex items-center justify-center p-4 transition-all duration-300 ${finishedScreenFadeOut ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
-          }`}>
+        <div
+          className={`min-h-screen flex items-center justify-center p-4 transition-all duration-300 ${
+            finishedScreenFadeOut ? "opacity-0 transform scale-95" : "opacity-100 transform scale-100"
+          }`}
+        >
           <Card className="w-full 4k:max-w-[2300px] bg-white/95 backdrop-blur-sm shadow-2xl">
             <CardContent className="p-6 text-center">
               <h1 className="4k:text-[100px] font-bold text-blue-800">Quiz Finalizado!</h1>
@@ -148,6 +145,7 @@ export default function RecifeQuiz() {
                   <p>{getScoreMessage(score)}</p>
                 </div>
               </div>
+
               <div className="mb-15 px-20 py-10">
                 <h2 className="4k:text-[70px] font-semibold text-blue-800 mb-2">
                   Vem construir esse projeto com a gente!
@@ -201,13 +199,22 @@ export default function RecifeQuiz() {
   return (
     <>
       <div className={backgroundClasses} />
-      <div className={`min-h-screen flex items-center justify-center p-4 relative transition-all duration-300 ${playingScreenFadeOut ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
-        }`}>
+      <div
+        className={`min-h-screen flex items-center justify-center p-4 relative transition-all duration-300 ${
+          playingScreenFadeOut ? "opacity-0 transform scale-95" : "opacity-100 transform scale-100"
+        }`}
+      >
         {showVideo && currentQuestion.mediaAfter && (
-          <div className={`fixed inset-0 bg-black bg-opacity-80 z-50  flex items-center justify-center transition-opacity duration-500 ${videoFadeOut ? 'opacity-0' : (videoFadeIn ? 'opacity-100' : 'opacity-0')
-            }`}>
-            <div className={`bg-white rounded-3xl overflow-hidden max-w-xl lg:max-w-3xl w-full transition-all duration-500 transform ${videoFadeOut ? 'opacity-0 scale-95' : videoFadeIn ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-              }`}>
+          <div
+            className={`fixed inset-0 bg-black bg-opacity-80 z-50  flex items-center justify-center transition-opacity duration-500 ${
+              videoFadeOut ? "opacity-0" : videoFadeIn ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <div
+              className={`bg-white rounded-3xl overflow-hidden max-w-xl lg:max-w-3xl w-full transition-all duration-500 transform ${
+                videoFadeOut ? "opacity-0 scale-95" : videoFadeIn ? "opacity-100 scale-100" : "opacity-0 scale-95"
+              }`}
+            >
               <video
                 src={currentQuestion.mediaAfter}
                 controls
@@ -219,27 +226,20 @@ export default function RecifeQuiz() {
           </div>
         )}
 
-        <Card className={`w-full min-h-screen bg-white/95 backdrop-blur-sm shadow-2xl z-10 transition-all duration-300 ${questionFadeOut ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
-          }`}>
+        <Card
+          className={`w-full min-h-screen bg-white/95 backdrop-blur-sm shadow-2xl z-10 transition-all duration-300 ${
+            questionFadeOut ? "opacity-0 transform scale-95" : "opacity-100 transform scale-100"
+          }`}
+        >
           <CardContent className="p-8">
             <div className="w-full max-w-xl 4k:max-w-3xl mx-auto">
               <div className="flex items-center justify-center gap-15">
                 <div className="flex-1 flex justify-center ">
-                  <Image
-                    src="/logo_euvi.png"
-                    alt="Logo Eu Vi"
-                    width={600}
-                    height={500}
-                  />
+                  <Image src="/logo_euvi.png" alt="Logo Eu Vi" width={600} height={500} />
                 </div>
                 <div className="w-px 4k:h-90  bg-blue-400"></div>
                 <div className="flex-1 flex justify-center">
-                  <Image
-                    src="/logorecife.webp"
-                    alt="Logo Prefeitura do Recife"
-                    width={700}
-                    height={700}
-                  />
+                  <Image src="/logorecife.webp" alt="Logo Prefeitura do Recife" width={700} height={700} />
                 </div>
               </div>
             </div>
@@ -259,62 +259,71 @@ export default function RecifeQuiz() {
                 style={{ width: `${((currentQuestionIndex + (showResult ? 1 : 0)) / 3) * 100}%` }}
               />
             </div>
-        
-        <div className="flex flex-row gap-10 items-center justify-center w-full">
-            {currentQuestion.image && (
-            <div className="flex justify-center items-center flex-1">
-              <div className="relative w-full 4k:max-w-[2400px] 4k:h-[2000px] rounded-lg overflow-hidden shadow-xl">
-                <Image
-                  src={currentQuestion.image}
-                  alt="Imagem relacionada à pergunta"
-                  fill
-                  className="object-cover"
-                />
+
+            <div className="flex flex-row gap-10 items-center justify-center w-full">
+              {currentQuestion.image && (
+                <div className="flex justify-center items-center flex-1">
+                  <div className="relative w-full 4k:max-w-[2400px] 4k:h-[2000px] rounded-lg overflow-hidden shadow-xl">
+                    <Image
+                      src={currentQuestion.image}
+                      alt="Imagem relacionada à pergunta"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              )}
+
+              <div className="flex-1 flex flex-col ">
+                <h2 className="4k:text-[75px] text-blue-800 font-semibold mb-4 leading-normal">
+                  {currentQuestion.question}
+                </h2>
+
+                <div className="grid gap-5 mb-4">
+                  {currentQuestion.options.map((option: string, index: number) => {
+                    const isFocused = !showResult && selectedAnswer === index;
+                    return (
+                      <Button
+                        key={index}
+                        ref={(el) => { optionRefs.current[index] = el as HTMLButtonElement | null;}}
+                        variant="outline"
+                        aria-selected={isFocused}
+                        className={
+                          getButtonClass(index, currentQuestion.correct, selectedAnswer, showResult) +
+                          " text-sm 4k:text-[65px] py-7 px-9 transition-shadow " +
+                          (isFocused
+                            ? " ring-2 ring-blue-600 border-blue-600 shadow-[0_0_0_4px_rgba(37,99,235,0.15)] "
+                            : "")
+                        }
+                        onClick={() => handleAnswerSelect(index)}
+                        disabled={showResult}
+                      >
+                        <span className="font-bold mr-2">{String.fromCharCode(65 + index)}) </span>
+                        <span className="flex-1">{option}</span>
+                        {showResult && index === currentQuestion.correct && (
+                          <CheckCircle className="ml-auto h-6 w-6 4k:h-[32px] 4k:w-[32px] text-green-600" />
+                        )}
+                        {showResult && index === selectedAnswer && index !== currentQuestion.correct && (
+                          <XCircle className="ml-auto h-6 w-6 4k:h-[32px] 4k:w-[32px] text-red-600" />
+                        )}
+                      </Button>
+                    );
+                  })}
+                </div>
+
+                {showResult && (
+                  <div className="text-center">
+                    <Button
+                      onClick={nextQuestion}
+                      className=" 4k:text-[70px] px-13 py-13 mt-10 rounded-2xl bg-blue-800 hover:bg-blue-700 text-white 4k:min-w-[500px]"
+                    >
+                      <ArrowBigRightDash className="mr-2 ml-5 h-10 w- 4k:h-[32px] 4k:w-[40px]" />
+                      {currentQuestionIndex < 2 ? "Próxima Pergunta" : "Ver Resultado"}
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
-            )}
-           
-          <div className="flex-1 flex flex-col ">
-            <h2 className="4k:text-[75px] text-blue-800 font-semibold mb-4 leading-normal">
-              {currentQuestion.question}
-            </h2>
-
-            <div className="grid gap-5 mb-4">
-              {currentQuestion.options.map((option, index) => (
-              <Button
-                  key={index}
-                  variant="outline"
-                  className={
-                    getButtonClass(index, currentQuestion.correct, selectedAnswer, showResult) +
-                    " text-sm 4k:text-[65px] py-7 px-9"
-                  }
-                  onClick={() => handleAnswerSelect(index)}
-                  disabled={showResult}
-                >
-                <span className="font-bold mr-2">{String.fromCharCode(65 + index)})</span>
-                <span className="flex-1">{option}</span>
-                {showResult && index === currentQuestion.correct && (
-                  <CheckCircle className="ml-auto h-6 w-6 4k:h-[32px] 4k:w-[32px] text-green-600" />
-                )}
-                {showResult && index === selectedAnswer && index !== currentQuestion.correct && (
-                  <XCircle className="ml-auto h-6 w-6 4k:h-[32px] 4k:w-[32px] text-red-600" />
-                )}
-              </Button>
-            ))}
-          </div>
-            {showResult && (
-            <div className="text-center">
-              <Button
-                onClick={nextQuestion}
-                className=" 4k:text-[70px] px-13 py-13 mt-10 rounded-2xl bg-blue-800 hover:bg-blue-700 text-white 4k:min-w-[500px]"
-              >
-                <ArrowBigRightDash className="mr-2 ml-5 h-10 w- 4k:h-[32px] 4k:w-[40px]" />
-                {currentQuestionIndex < 2 ? "Próxima Pergunta" : "Ver Resultado"}
-              </Button>
-            </div>
-            )}
-          </div>
-         </div>
           </CardContent>
         </Card>
       </div>
