@@ -135,8 +135,8 @@ export default function RecifeQuiz() {
             finishedScreenFadeOut ? "opacity-0 transform scale-95" : "opacity-100 transform scale-100"
           }`}
         >
-          <Card className="w-full 4k:max-w-[2300px] bg-white/95 backdrop-blur-sm shadow-2xl">
-            <CardContent className="p-6 text-center">
+          <Card className="w-full 4k:max-w-[1850px] bg-white/95 backdrop-blur-sm shadow-2xl">
+            <CardContent className="p-4 text-center">
               <h1 className="4k:text-[100px] font-bold text-blue-800">Quiz Finalizado!</h1>
 
               <div className="bg-blue-50 p-6 rounded-3xl">
