@@ -152,7 +152,7 @@ export const useQuiz = () => {
         return;
       }
 
-      if (gameState !== "start" && gameState !== "finished") {
+      if (gameState === 'playing') {
         if (!showResult && selectedAnswer !== null) {
           handleAnswerSelect(selectedAnswer);
         } else if (showResult) {
