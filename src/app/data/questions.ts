@@ -164,18 +164,4 @@ export const QUESTIONS: Question[] = [
     correct: 2,
   },
 
-    {
-       id: 18,
-    image: '/paulo_freire.png',
-    question:
-      "A UFPE possui um rico acervo de obras de arte públicas. Entre elas, está uma estátua de bronze criada pelo mestre Abelardo da Hora que retrata um grande filósofo e educador pernambucano. Quem é ele?",
-    options: [
-      "Paulo Freire ",
-      "Silke Weber",
-      "Cícero Dias",
-    ],
-    correct: 0,
-  },
-  
-
 ];
