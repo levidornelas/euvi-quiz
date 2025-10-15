@@ -60,7 +60,7 @@ export const QUESTIONS: Question[] = [
     correct: 2,
   },
   {
-    id: 9,
+    id: 8,
     image: '/cicero.jpg',
     question:
       '"Eu vi o mundo... ele começava no Recife" é o nome da mais famosa pintura de Cícero Dias. O título da obra também está gravado na sua Rosa dos Ventos, que fica no centro de uma conhecida praça da cidade. Qual?',
@@ -68,7 +68,7 @@ export const QUESTIONS: Question[] = [
     correct: 0,
   },
   {
-    id: 10,
+    id: 9,
     image: '/devotos.webp',
     question:
       'Banda icônica da cena punk do Recife, a Devotos fez o público enxergar a efervescência cultural de um bairro da Zona Norte da Cidade. Esse bairro, inclusive, está no título de sua música mais famosa: "Punk Rock Hardcore..."?',
@@ -76,7 +76,7 @@ export const QUESTIONS: Question[] = [
     correct: 0,
   },
   {
-    id: 11,
+    id: 10,
     image: '/joaocabral-estatua.jpg',
     question:
       "O poema “O Cão sem Plumas”, de João Cabral de Melo Neto, é uma metáfora sobre um importante rio que cruza a cidade do Recife. Que rio é esse?",
@@ -87,20 +87,9 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
   },
-  {
-       id: 12,
-    image: '/Nzambi.png',
-    question:
-      "Em 2025, a banda pernambucana de reggae N’Zambi lançou um EP com releituras de clássicos de qual gênero musical típico de Pernambuco?",
-    options: [
-      "Forró",
-      "Frevo",
-      "Maracatu",
-    ],
-    correct: 1,
-  },
+ 
     {
-       id: 13,
+       id: 11,
     image: '/oficina.png',
     question:
       "Antes de se tornar a famosa Oficina Brennand, qual era o nome da antiga fábrica de cerâmica onde o espaço foi instalado?",
@@ -113,7 +102,7 @@ export const QUESTIONS: Question[] = [
   },
 
   {
-       id: 14,
+       id: 12,
     image: '/jardim_oficina.png',
     question:
       "O jardim da Oficina Francisco Brennand, que abriga diversas esculturas do artista, foi projetado em parceria com qual famoso paisagista brasileiro?",
@@ -126,7 +115,7 @@ export const QUESTIONS: Question[] = [
   },
 
   {
-       id: 15,
+       id: 13,
     image: '/barsavoy.png',
     question:
       "O quadro “Bar Savoy”, da pintora pernambucana Tereza Costa Rêgo, retrata o antigo Bar Savoy, localizado no centro do Recife, e apresenta na parte inferior o poema “Chopp”, de Carlos Pena Filho. Onde está localizada essa obra?",
@@ -139,7 +128,7 @@ export const QUESTIONS: Question[] = [
   },
 
   {
-       id: 16,
+       id: 14,
     image: '/agente_secreto.png',
     question:
       "O filme “O Agente Secreto”, mais novo longa-metragem do cineasta Kleber Mendonça Filho, tem cenas gravadas em qual espaço da Várzea?",
@@ -150,18 +139,4 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
   },
-
-  {
-       id: 17,
-    image: '/coco',
-    question:
-      "A Várzea é o bairro onde mora um mestre da cultura popular, considerado um percurso do Coco no estado de Pernambuco. Quem é ele?",
-    options: [
-      "Mestre Galo Preto",
-      "Mestre Vitalino",
-      "Mestre Zé Lasca Vara",
-    ],
-    correct: 2,
-  },
-
 ];
